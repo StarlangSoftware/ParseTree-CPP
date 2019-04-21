@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(include)
 link_directories(library)
 
-add_library(ParseTree SearchDirectionType.h Symbol.cpp Symbol.h)
+add_library(ParseTree SearchDirectionType.h Symbol.cpp Symbol.h ParseNode.cpp ParseNode.h)
 
 target_link_libraries(ParseTree Dictionary)
