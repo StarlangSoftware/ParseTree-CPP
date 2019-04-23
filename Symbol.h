@@ -25,14 +25,13 @@ public:
     bool isTerminal();
     bool isChunkLabel();
     Symbol trimSymbol();
+    static bool contains(vector<string> list, string searchedItem);
     bool operator==(const Symbol &anotherSymbol) const{
         return (name == anotherSymbol.name);
     }
     bool operator<(const Symbol &anotherSymbol) const{
         return (name < anotherSymbol.name);
     }
-private:
-    bool contains(vector<string> list, string searchedItem);
 };
 
 

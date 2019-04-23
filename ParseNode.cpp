@@ -36,7 +36,7 @@ ParseNode::ParseNode(ParseNode *parent, string line, bool isLeaf) {
                     }
                 }
                 if (parenthesisCount == 0 && !childLine.empty()){
-                    children.push_back(new ParseNode(this, childLine, false));
+                    children.push_back(new ParseNode(this, Word::trim(childLine), false));
                     childLine = "";
                 }
             }
