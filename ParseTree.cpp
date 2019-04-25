@@ -8,6 +8,8 @@
 #include "NodeCollector.h"
 #include "NodeCondition/IsEnglishLeaf.h"
 
+const vector<string> ParseTree::sentenceLabels = {"SINV", "SBARQ", "SBAR", "SQ", "S"};
+
 ParseTree::ParseTree(ParseNode *root) {
     this->root = root;
 }

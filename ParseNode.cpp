@@ -4,6 +4,35 @@
 
 #include "ParseNode.h"
 
+const vector<string> ParseNode::ADJP = {"NNS", "QP", "NN", "$", "ADVP", "JJ", "VBN", "VBG", "ADJP", "JJR", "NP", "JJS", "DT", "FW", "RBR", "RBS", "SBAR", "RB"};
+const vector<string> ParseNode::ADVP = {"RB", "RBR", "RBS", "FW", "ADVP", "TO", "CD", "JJR", "JJ", "IN", "NP", "JJS", "NN"};
+const vector<string> ParseNode::CONJP = {"CC", "RB", "IN"};
+const vector<string> ParseNode::FRAG = {};
+const vector<string> ParseNode::INTJ = {};
+const vector<string> ParseNode::LST = {"LS", ":"};
+const vector<string> ParseNode::NAC = {"NN", "NNS", "NNP", "NNPS", "NP", "NAC", "EX", "$", "CD", "QP", "PRP", "VBG", "JJ", "JJS", "JJR", "ADJP", "FW"};
+const vector<string> ParseNode::PP = {"IN", "TO", "VBG", "VBN", "RP", "FW"};
+const vector<string> ParseNode::PRN = {};
+const vector<string> ParseNode::PRT = {"RP"};
+const vector<string> ParseNode::QP = {"$", "IN", "NNS", "NN", "JJ", "RB", "DT", "CD", "NCD", "QP", "JJR", "JJS"};
+const vector<string> ParseNode::RRC = {"VP", "NP", "ADVP", "ADJP", "PP"};
+const vector<string> ParseNode::S = {"TO", "IN", "VP", "S", "SBAR", "ADJP", "UCP", "NP"};
+const vector<string> ParseNode::SBAR = {"WHNP", "WHPP", "WHADVP", "WHADJP", "IN", "DT", "S", "SQ", "SINV", "SBAR", "FRAG"};
+const vector<string> ParseNode::SBARQ = {"SQ", "S", "SINV", "SBARQ", "FRAG"};
+const vector<string> ParseNode::SINV = {"VBZ", "VBD", "VBP", "VB", "MD", "VP", "S", "SINV", "ADJP", "NP"};
+const vector<string> ParseNode::SQ = {"VBZ", "VBD", "VBP", "VB", "MD", "VP", "SQ"};
+const vector<string> ParseNode::UCP = {};
+const vector<string> ParseNode::VP = {"TO", "VBD", "VBN", "MD", "VBZ", "VB", "VBG", "VBP", "VP", "ADJP", "NN", "NNS", "NP"};
+const vector<string> ParseNode::WHADJP = {"CC", "WRB", "JJ", "ADJP"};
+const vector<string> ParseNode::WHADVP = {"CC", "WRB"};
+const vector<string> ParseNode::WHNP = {"WDT", "WP", "WP$", "WHADJP", "WHPP", "WHNP"};
+const vector<string> ParseNode::WHPP = {"IN", "TO", "FW"};
+const vector<string> ParseNode::NP1 = {"NN", "NNP", "NNPS", "NNS", "NX", "POS", "JJR"};
+const vector<string> ParseNode::NP2 = {"NP"};
+const vector<string> ParseNode::NP3 = {"$", "ADJP", "PRN"};
+const vector<string> ParseNode::NP4 = {"CD"};
+const vector<string> ParseNode::NP5 = {"JJ" , "JJS", "RB", "QP"};
+
 ParseNode::~ParseNode(){
     for (ParseNode* child : children){
         delete child;

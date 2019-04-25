@@ -10,13 +10,10 @@
 
 class Symbol : public Word{
 private:
-    vector<string> nonTerminalList = {"ADJP", "ADVP", "CC", "CD", "CONJP", "DT", "EX", "FRAG", "FW", "IN", "INTJ", "JJ", "JJR", "JJS", "LS",
-                                      "LST", "MD", "NAC", "NN", "NNP", "NNPS", "NNS", "NP", "NX", "PDT", "POS", "PP", "PRN", "PRP", "PRP$", "PRT",
-                                      "PRT|ADVP", "QP", "RB", "RBR", "RP", "RRC", "S", "SBAR", "SBARQ", "SINV", "SQ", "SYM", "TO", "UCP", "UH", "VB", "VBD", "VBG", "VBN",
-                                      "VBP", "VBZ", "VP", "WDT", "WHADJP", "WHADVP", "WHNP", "WP", "WP$", "WRB", "X", "-NONE-"};
-    vector<string> phraseLabels = {"NP", "PP", "ADVP", "ADJP", "CC", "VG"};
-    vector<string> sentenceLabels = {"SINV","SBARQ","SBAR","SQ","S"};
-    vector<string> verbLabels = {"VB", "VBD", "VBG", "VBN","VBP", "VBZ", "VERB"};
+    static const vector<string> nonTerminalList;
+    static const vector<string> phraseLabels;
+    static const vector<string> sentenceLabels;
+    static const vector<string> verbLabels;
     string VPLabel = "VP";
 public:
     explicit Symbol(string name);

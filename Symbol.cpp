@@ -5,6 +5,14 @@
 #include <string>
 #include "Symbol.h"
 
+const vector<string> Symbol::nonTerminalList = {"ADJP", "ADVP", "CC", "CD", "CONJP", "DT", "EX", "FRAG", "FW", "IN", "INTJ", "JJ", "JJR", "JJS", "LS",
+"LST", "MD", "NAC", "NN", "NNP", "NNPS", "NNS", "NP", "NX", "PDT", "POS", "PP", "PRN", "PRP", "PRP$", "PRT",
+"PRT|ADVP", "QP", "RB", "RBR", "RP", "RRC", "S", "SBAR", "SBARQ", "SINV", "SQ", "SYM", "TO", "UCP", "UH", "VB", "VBD", "VBG", "VBN",
+"VBP", "VBZ", "VP", "WDT", "WHADJP", "WHADVP", "WHNP", "WP", "WP$", "WRB", "X", "-NONE-"};
+const vector<string> Symbol::phraseLabels = {"NP", "PP", "ADVP", "ADJP", "CC", "VG"};
+const vector<string> Symbol::sentenceLabels = {"SINV","SBARQ","SBAR","SQ","S"};
+const vector<string> Symbol::verbLabels = {"VB", "VBD", "VBG", "VBN","VBP", "VBZ", "VERB"};
+
 Symbol::Symbol(string name) : Word(move(name)) {
 }
 

@@ -13,6 +13,7 @@ protected:
     vector<ParseTree> parseTrees;
 public:
     TreeBank() = default;
+    TreeBank(string folder, string fileList);
     explicit TreeBank(istream& inputFile);
     void stripPunctuation();
     int size();

@@ -72,3 +72,19 @@ int TreeBank::countWords(bool excludeStopWords) {
     }
     return count;
 }
+
+TreeBank::TreeBank(string folder, string fileList) {
+    ifstream treeBankFile, parseTreeFile;
+    string line;
+    treeBankFile.open(fileList, ifstream::in);
+    while (treeBankFile.good()){
+        treeBankFile >> line;
+        string fileName = folder;
+        fileName += "/" + line;
+        parseTreeFile.open(fileName, ifstream::in);
+        ParseTree parseTree = ParseTree(parseTreeFile);
+        parseTrees.push_back(parseTree);
+        parseTreeFile.close();
+    }
+    treeBankFile.close();
+}

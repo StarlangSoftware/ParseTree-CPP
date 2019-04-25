@@ -13,7 +13,7 @@ using namespace std;
 
 class ParseTree {
 private:
-    vector<string> sentenceLabels = {"SINV", "SBARQ", "SBAR", "SQ", "S"};
+    static const vector<string> sentenceLabels;
 protected:
     ParseNode* root = nullptr;
 public:
