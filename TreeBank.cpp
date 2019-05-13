@@ -22,8 +22,8 @@ TreeBank::TreeBank(istream& inputFile) {
         }
         treeLine += line;
         if (parenthesisCount == 0){
-            ParseTree tree = ParseTree(treeLine);
-            if (tree.getRoot() != nullptr){
+            auto* tree = new ParseTree(treeLine);
+            if (tree->getRoot() != nullptr){
                 parseTrees.push_back(tree);
             }
             treeLine = "";
@@ -33,8 +33,8 @@ TreeBank::TreeBank(istream& inputFile) {
 }
 
 void TreeBank::stripPunctuation() {
-    for (ParseTree tree : parseTrees){
-        tree.stripPunctuation();
+    for (ParseTree* tree : parseTrees){
+        tree->stripPunctuation();
     }
 }
 
@@ -44,36 +44,36 @@ int TreeBank::size() {
 
 int TreeBank::wordCount(bool excludeStopWords) {
     int count = 0;
-    for (ParseTree tree:parseTrees){
-        count += tree.wordCount(excludeStopWords);
+    for (ParseTree* tree:parseTrees){
+        count += tree->wordCount(excludeStopWords);
     }
     return count;
 }
 
-void TreeBank::save(string fileName) {
+void TreeBank::save(const string& fileName) {
     ofstream outputFile;
     outputFile.open(fileName, ostream::out);
-    for (ParseTree parseTree : parseTrees){
+    for (ParseTree* parseTree : parseTrees){
         outputFile << "( ";
-        outputFile << parseTree.to_string();
+        outputFile << parseTree->to_string();
         outputFile << " )\n";
     }
     outputFile.close();
 }
 
-ParseTree TreeBank::get(int index) {
+ParseTree* TreeBank::get(int index) {
     return parseTrees.at(index);
 }
 
 int TreeBank::countWords(bool excludeStopWords) {
     int count = 0;
-    for (ParseTree tree : parseTrees){
-        count += tree.wordCount(excludeStopWords);
+    for (ParseTree* tree : parseTrees){
+        count += tree->wordCount(excludeStopWords);
     }
     return count;
 }
 
-TreeBank::TreeBank(string folder, string fileList) {
+TreeBank::TreeBank(const string& folder, const string& fileList) {
     ifstream treeBankFile, parseTreeFile;
     string line;
     treeBankFile.open(fileList, ifstream::in);
@@ -82,9 +82,15 @@ TreeBank::TreeBank(string folder, string fileList) {
         string fileName = folder;
         fileName += "/" + line;
         parseTreeFile.open(fileName, ifstream::in);
-        ParseTree parseTree = ParseTree(parseTreeFile);
+        auto* parseTree = new ParseTree(parseTreeFile);
         parseTrees.push_back(parseTree);
         parseTreeFile.close();
     }
     treeBankFile.close();
+}
+
+TreeBank::~TreeBank() {
+    for (ParseTree* tree : parseTrees){
+        delete tree;
+    }
 }
