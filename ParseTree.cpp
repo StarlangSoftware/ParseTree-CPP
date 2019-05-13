@@ -77,7 +77,7 @@ bool ParseTree::isFullSentence() {
     return false;
 }
 
-void ParseTree::save(string fileName) {
+void ParseTree::save(const string& fileName) {
     ofstream outputFile;
     outputFile.open(fileName, ostream::out);
     outputFile << "( ";
@@ -112,4 +112,8 @@ string ParseTree::toSentence() {
 
 int ParseTree::wordCount(bool excludeStopWords) {
     return root->wordCount(excludeStopWords);
+}
+
+ParseTree::~ParseTree() {
+    delete root;
 }
