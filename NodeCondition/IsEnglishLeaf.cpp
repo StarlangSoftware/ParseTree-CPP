@@ -4,6 +4,11 @@
 
 #include "IsEnglishLeaf.h"
 
+/**
+ * Implemented node condition for English leaf node.
+ * @param parseNode Checked node.
+ * @return If the node is a leaf node and is not a dummy node, returns true; false otherwise.
+ */
 bool IsEnglishLeaf::satisfies(ParseNode *parseNode) {
     if (IsLeaf::satisfies(parseNode)) {
         string data = parseNode->getData().getName();

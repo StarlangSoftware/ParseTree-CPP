@@ -21,7 +21,6 @@ public:
     int wordCount(bool excludeStopWords);
     void save(const string& fileName);
     ParseTree* get(int index);
-    int countWords(bool excludeStopWords);
 };
 
 
