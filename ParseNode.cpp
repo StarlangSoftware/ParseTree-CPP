@@ -696,3 +696,34 @@ void ParseNode::moveRight(ParseNode *node) {
         aChild->moveRight(node);
     }
 }
+
+/**
+ * Returns the index of the given child of this node.
+ * @return Index of the child of this node.
+ */
+int ParseNode::getChildIndex(ParseNode *child) {
+    int i;
+    for (i = 0; i < children.size(); i++) {
+        if (children.at(i) == child) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+/**
+ * Returns true if the given node is a descendant of this node.
+ * @return True if the given node is descendant of this node.
+ */
+bool ParseNode::isDescendant(ParseNode *node) {
+    for (ParseNode* aChild: children){
+        if (aChild == node){
+            return true;
+        } else {
+            if (aChild->isDescendant(node)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
