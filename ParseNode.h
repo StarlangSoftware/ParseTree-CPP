@@ -45,7 +45,6 @@ private:
 protected:
     vector<ParseNode*> children;
     ParseNode* parent = nullptr;
-    int childIndex = -1;
     Symbol data = Symbol("");
 public:
     ParseNode() = default;

@@ -50,9 +50,6 @@ ParseNode::ParseNode(ParseNode *parent, string line, bool isLeaf) {
     int parenthesisCount = 0;
     string childLine;
     this->parent = parent;
-    if (parent != nullptr){
-        this->childIndex = parent->children.size() - 1;
-    }
     if (isLeaf){
         data = Symbol(line);
     } else {
