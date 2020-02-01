@@ -20,7 +20,6 @@ public:
     ParseTree() = default;
     ~ParseTree();
     explicit ParseTree(ParseNode* root);
-    explicit ParseTree(string line);
     explicit ParseTree(istream& inputFile);
     ParseNode* nextLeafNode(ParseNode* parseNode);
     ParseNode* previousLeafNode(ParseNode* parseNode);

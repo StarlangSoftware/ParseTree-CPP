@@ -5,33 +5,6 @@
 #include <fstream>
 #include "TreeBank.h"
 
-TreeBank::TreeBank(istream& inputFile) {
-    string line, treeLine;
-    int parenthesisCount = 0;
-    getline(inputFile, line);
-    treeLine = "";
-    while (!line.empty()){
-        for (char ch : line) {
-            if (ch == '('){
-                parenthesisCount++;
-            } else {
-                if (ch == ')'){
-                    parenthesisCount--;
-                }
-            }
-        }
-        treeLine += line;
-        if (parenthesisCount == 0){
-            auto* tree = new ParseTree(treeLine);
-            if (tree->getRoot() != nullptr){
-                parseTrees.push_back(tree);
-            }
-            treeLine = "";
-        }
-        getline(inputFile, line);
-    }
-}
-
 /**
  * Strips punctuation symbols from all parseTrees in this TreeBank.
  */
@@ -61,23 +34,6 @@ int TreeBank::wordCount(bool excludeStopWords) {
         count += tree->wordCount(excludeStopWords);
     }
     return count;
-}
-
-/**
- * Obsolete function of the {@link TreeBank} class. If the contents of all the parseTree's must be inside a
- * single file, this function saves all the ParseTree's in a single file. Each line in this file corresponds to a
- * single ParseTree.
- * @param fileName Output file that will contain the parse trees.
- */
-void TreeBank::save(const string& fileName) {
-    ofstream outputFile;
-    outputFile.open(fileName, ostream::out);
-    for (ParseTree* parseTree : parseTrees){
-        outputFile << "( ";
-        outputFile << parseTree->to_string();
-        outputFile << " )\n";
-    }
-    outputFile.close();
 }
 
 /**

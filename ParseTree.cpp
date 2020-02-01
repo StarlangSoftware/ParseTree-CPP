@@ -19,22 +19,6 @@ ParseTree::ParseTree(ParseNode *root) {
 }
 
 /**
- * Original constructor of the ParseTree. The method takes the line containing the information about the nodes as
- * input and calls the ParseNode constructor recursively to generate to whole tree.
- * @param line String that contains the tree information
- */
-ParseTree::ParseTree(string line) {
-    line = Word::replaceAll(line, "\n", "");
-    line = Word::replaceAll(line, "\t", "");
-    if (line.find('(') != string::npos && line.find_last_of(')') != string::npos){
-        line = Word::trim(line.substr(line.find('(') + 1, line.find_last_of(')') - line.find('(') - 1));
-        root = new ParseNode(nullptr, line, false);
-    } else {
-        root = nullptr;
-    }
-}
-
-/**
  * Another constructor of the ParseTree. The method takes the file containing a single line as input and constructs
  * the whole tree by calling the ParseNode constructor recursively.
  * @param file File containing a single line for a ParseTree
