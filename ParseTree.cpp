@@ -168,3 +168,15 @@ int ParseTree::wordCount(bool excludeStopWords) {
 ParseTree::~ParseTree() {
     delete root;
 }
+
+/**
+ * Generates a list of constituents in the parse tree and their spans.
+ * @return A list of constituents in the parse tree and their spans.
+ */
+vector<ConstituentSpan> ParseTree::constituentSpanList() {
+    vector<ConstituentSpan> result;
+    if (root != NULL){
+        root->constituentSpanList(1, result);
+    }
+    return result;
+}

@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include "ParseNode.h"
+#include "ConstituentSpan.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ public:
     int nodeCount();
     int leafCount();
     bool isFullSentence();
+    vector<ConstituentSpan> constituentSpanList();
     void save(const string& fileName);
     void correctParents();
     void removeXNodes();
