@@ -7,7 +7,7 @@ include_directories(include)
 link_directories(library)
 
 add_library(ParseTree SearchDirectionType.h Symbol.cpp Symbol.h ParseNode.cpp ParseNode.h ParseTree.cpp ParseTree.h NodeCondition/NodeCondition.h NodeCondition/IsLeaf.cpp NodeCondition/IsLeaf.h NodeCondition/IsEnglishLeaf.cpp NodeCondition/IsEnglishLeaf.h NodeCollector.cpp NodeCollector.h TreeBank.cpp TreeBank.h)
-add_executable(TestTreeBank SearchDirectionType.h Symbol.cpp Symbol.h ParseNode.cpp ParseNode.h ParseTree.cpp ParseTree.h NodeCondition/NodeCondition.h NodeCondition/IsLeaf.cpp NodeCondition/IsLeaf.h NodeCondition/IsEnglishLeaf.cpp NodeCondition/IsEnglishLeaf.h NodeCollector.cpp NodeCollector.h TreeBank.cpp TreeBank.h TestTreeBank.cpp ConstituentSpan.cpp ConstituentSpan.h)
+add_executable(Test SearchDirectionType.h Symbol.cpp Symbol.h ParseNode.cpp ParseNode.h ParseTree.cpp ParseTree.h NodeCondition/NodeCondition.h NodeCondition/IsLeaf.cpp NodeCondition/IsLeaf.h NodeCondition/IsEnglishLeaf.cpp NodeCondition/IsEnglishLeaf.h NodeCollector.cpp NodeCollector.h TreeBank.cpp TreeBank.h ConstituentSpan.cpp ConstituentSpan.h Test/SymbolTest.cpp Test/NodeCollectorTest.cpp Test/ParseTreeTest.cpp Test/TreeBankTest.cpp)
 
 target_link_libraries(ParseTree Dictionary)
-target_link_libraries(TestTreeBank Dictionary)
+target_link_libraries(Test Dictionary)

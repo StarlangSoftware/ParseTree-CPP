@@ -50,17 +50,15 @@ ParseTree* TreeBank::get(int index) {
  * file inside that folder, the constructor creates a ParseTree and puts in inside the list parseTrees.
  */
 TreeBank::TreeBank(const string& folder, const string& fileList) {
-    ifstream treeBankFile, parseTreeFile;
+    ifstream treeBankFile;
     string line;
     treeBankFile.open(fileList, ifstream::in);
     while (treeBankFile.good()){
         treeBankFile >> line;
         string fileName = folder;
         fileName += "/" + line;
-        parseTreeFile.open(fileName, ifstream::in);
-        auto* parseTree = new ParseTree(parseTreeFile);
+        auto* parseTree = new ParseTree(fileName);
         parseTrees.push_back(parseTree);
-        parseTreeFile.close();
     }
     treeBankFile.close();
 }

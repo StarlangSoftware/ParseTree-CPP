@@ -404,7 +404,7 @@ int ParseNode::leafCount() {
  * @return Number of all nodes in the current subtree.
  */
 int ParseNode::nodeCount() {
-    if (children.empty()){
+    if (!children.empty()){
         int sum = 1;
         for (ParseNode* child: children){
             sum += child->nodeCount();
@@ -611,7 +611,11 @@ string ParseNode::toSentence() {
         if (!getData().getName().empty() && !isDummyNode()){
             return " " + Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(getData().getName(), "-LRB-", "("), "-RRB-", ")"), "-LSB-", "["), "-RSB-", "]"), "-LCB-", "{"), "-RCB-", "}"), "-lrb-", "("), "-rrb-", ")"), "-lsb-", "["), "-rsb-", "]"), "-lcb-", "{"), "-rcb-", "}");
         } else {
-            return " ";
+            if (isDummyNode()){
+                return "";
+            } else {
+                return " ";
+            }
         }
     } else {
         string st;
@@ -730,7 +734,7 @@ bool ParseNode::isDescendant(ParseNode *node) {
  * @param startIndex Start index of the leftmost leaf node of this subtree.
  * @param list Returned span list.
  */
-void ParseNode::constituentSpanList(int startIndex, vector<ConstituentSpan> list) {
+void ParseNode::constituentSpanList(int startIndex, vector<ConstituentSpan>& list) {
     if (children.size() > 0){
         list.push_back(ConstituentSpan(data, startIndex, startIndex + leafCount()));
     }

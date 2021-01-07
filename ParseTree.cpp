@@ -34,6 +34,20 @@ ParseTree::ParseTree(istream &inputFile) {
     }
 }
 
+ParseTree::ParseTree(string fileName) {
+    ifstream inputFile;
+    inputFile.open(fileName, ifstream::in);
+    string line;
+    getline(inputFile, line);
+    if (line.find('(') != string::npos && line.find_last_of(')') != string::npos){
+        line = Word::trim(line.substr(line.find('(') + 1, line.find_last_of(')') - line.find('(') - 1));
+        root = new ParseNode(nullptr, line, false);
+    } else {
+        root = nullptr;
+    }
+    inputFile.close();
+}
+
 /**
  * Gets the next leaf node after the given leaf node in the ParseTree.
  * @param parseNode ParseNode for which next node is calculated.
@@ -153,7 +167,7 @@ ParseNode *ParseTree::getRoot() {
  * @return A sentence which contains all words in the tree.
  */
 string ParseTree::toSentence() {
-    return root->toSentence();
+    return Word::trim(root->toSentence());
 }
 
 /**

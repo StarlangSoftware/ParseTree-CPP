@@ -22,6 +22,7 @@ public:
     ~ParseTree();
     explicit ParseTree(ParseNode* root);
     explicit ParseTree(istream& inputFile);
+    explicit ParseTree(string fileName);
     ParseNode* nextLeafNode(ParseNode* parseNode);
     ParseNode* previousLeafNode(ParseNode* parseNode);
     int nodeCountWithMultipleChildren();

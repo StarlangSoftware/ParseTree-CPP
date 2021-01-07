@@ -80,7 +80,7 @@ public:
     Symbol getData();
     void setData(Symbol data);
     int wordCount(bool excludeStopWords);
-    void constituentSpanList(int startIndex, vector<ConstituentSpan> list);
+    void constituentSpanList(int startIndex, vector<ConstituentSpan>& list);
     bool isLeaf();
     bool isDummyNode();
     string toSentence();
