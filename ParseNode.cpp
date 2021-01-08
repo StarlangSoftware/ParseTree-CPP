@@ -736,7 +736,7 @@ bool ParseNode::isDescendant(ParseNode *node) {
  */
 void ParseNode::constituentSpanList(int startIndex, vector<ConstituentSpan>& list) {
     if (children.size() > 0){
-        list.push_back(ConstituentSpan(data, startIndex, startIndex + leafCount()));
+        list.emplace_back(data, startIndex, startIndex + leafCount());
     }
     int total = 0;
     for (ParseNode* parseNode : children){
