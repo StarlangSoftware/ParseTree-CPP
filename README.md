@@ -120,3 +120,15 @@ number of words in a ParseTree:
 	int wordCount(boolean excludeStopWords)
 	
 above methods can be used.
+
+# Cite
+
+	@INPROCEEDINGS{9259873,
+  	author={N. {Kara} and B. {Marşan} and M. {Özçelik} and B. N. {Arıcan} and A. {Kuzgun} and N. {Cesur} and D. B. {Aslan} and O. T. {Yıldız}},
+  	booktitle={2020 Innovations in Intelligent Systems and Applications Conference (ASYU)}, 
+  	title={Creating A Syntactically Felicitous Constituency Treebank For Turkish}, 
+  	year={2020},
+  	volume={},
+  	number={},
+  	pages={1-6},
+  	doi={10.1109/ASYU50717.2020.9259873}}
