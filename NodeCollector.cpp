@@ -22,12 +22,11 @@ NodeCollector::NodeCollector(ParseNode *rootNode, NodeCondition *condition) {
  * @param collected The {@link ArrayList} where the collected ParseNode's will be stored.
  */
 void NodeCollector::collectNodes(ParseNode *parseNode, vector<ParseNode *> &collected) {
-    if (condition->satisfies(parseNode)){
+    if (condition == nullptr || condition->satisfies(parseNode)){
         collected.push_back(parseNode);
-    } else {
-        for (int i = 0; i < parseNode->numberOfChildren(); i++){
-            collectNodes(parseNode->getChild(i), collected);
-        }
+    }
+    for (int i = 0; i < parseNode->numberOfChildren(); i++){
+        collectNodes(parseNode->getChild(i), collected);
     }
 }
 
