@@ -689,7 +689,11 @@ void ParseNode::moveRight(ParseNode *node) {
     int i;
     for (i = 0; i < children.size(); i++) {
         if (children.at(i) == node){
-            iter_swap(children.begin() + i, children.begin() + (i + 1) % children.size());
+            if (i == children.size() - 1){
+                iter_swap(children.begin(), children.begin() + children.size() - 1);
+            } else {
+                iter_swap(children.begin() + i, children.begin() + (i + 1) % children.size());
+            }
             return;
         }
     }
