@@ -10,7 +10,7 @@ The very first comprehensive annotated treebank, the Penn Treebank, was created 
 For Developers
 ============
 
-You can also see [Java](https://github.com/starlangsoftware/ParseTree), [Python](https://github.com/starlangsoftware/ParseTree-Py), [Cython](https://github.com/starlangsoftware/ParseTree-Cy), [Swift](https://github.com/starlangsoftware/ParseTree-Swift), or [C#](https://github.com/starlangsoftware/ParseTree-CS) repository.
+You can also see [Java](https://github.com/starlangsoftware/ParseTree), [Python](https://github.com/starlangsoftware/ParseTree-Py), [Cython](https://github.com/starlangsoftware/ParseTree-Cy), [Swift](https://github.com/starlangsoftware/ParseTree-Swift), [Js](https://github.com/starlangsoftware/ParseTree-Js), or [C#](https://github.com/starlangsoftware/ParseTree-CS) repository.
 
 ## Requirements
 
