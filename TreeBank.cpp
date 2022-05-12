@@ -58,6 +58,7 @@ TreeBank::TreeBank(const string& folder, const string& fileList) {
         string fileName = folder;
         fileName += "/" + line;
         auto* parseTree = new ParseTree(fileName);
+        parseTree->setName(line);
         parseTrees.push_back(parseTree);
     }
     treeBankFile.close();
@@ -67,4 +68,8 @@ TreeBank::~TreeBank() {
     for (ParseTree* tree : parseTrees){
         delete tree;
     }
+}
+
+void TreeBank::removeTree(int index) {
+    parseTrees.erase(parseTrees.begin() + index);
 }

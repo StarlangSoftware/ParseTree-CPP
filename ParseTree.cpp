@@ -48,6 +48,14 @@ ParseTree::ParseTree(string fileName) {
     inputFile.close();
 }
 
+void ParseTree::setName(string name) {
+    this->name = move(name);
+}
+
+string ParseTree::getName(){
+    return name;
+}
+
 /**
  * Gets the next leaf node after the given leaf node in the ParseTree.
  * @param parseNode ParseNode for which next node is calculated.
