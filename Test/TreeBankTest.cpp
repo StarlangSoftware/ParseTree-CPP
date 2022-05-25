@@ -8,5 +8,5 @@
 TEST_CASE("TreeBankTest-testTreeBank") {
     TreeBank treeBank1 = TreeBank("trees", "fileList.txt");
     REQUIRE(5 == treeBank1.size());
-    REQUIRE(36 == treeBank1.wordCount(true));
+    REQUIRE(30 == treeBank1.wordCount(true));
 }

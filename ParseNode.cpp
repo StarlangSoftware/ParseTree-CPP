@@ -553,24 +553,25 @@ int ParseNode::wordCount(bool excludeStopWords) {
         if (!excludeStopWords){
             sum = 1;
         } else {
-            if (data.getName() == "," || data.getName() == "." || data.getName() == ";"
-                || data.getName().find('*') != string::npos || data.getName() == "at" || data.getName() == "the"
-                || data.getName() == "to" || data.getName() == "a" || data.getName() == "an"
-                || data.getName() == "not" || data.getName() == "is" || data.getName() == "was"
-                || data.getName() == "were" || data.getName() == "have" || data.getName() == "had"
-                || data.getName() == "has" || data.getName() == "!" || data.getName() == "?"
-                || data.getName() == "by" || data.getName() == "at" || data.getName() == "on"
-                || data.getName() == "off" || data.getName() == "'s" || data.getName() == "n't"
-                || data.getName() == "can" || data.getName() == "could" || data.getName() == "may"
-                || data.getName() == "might" || data.getName() == "will" || data.getName() == "would"
-                || data.getName() == "''" || data.getName() == "'" || data.getName() == "\""
-                || data.getName() == "\"\"" || data.getName() == "as" || data.getName() == "with"
-                || data.getName() == "for" || data.getName() == "will" || data.getName() == "would"
-                || data.getName() == "than" || data.getName() == "``" || data.getName() == "$"
-                || data.getName() == "and" || data.getName() == "or" || data.getName() == "of"
-                || data.getName() == "are" || data.getName() == "be" || data.getName() == "been"
-                || data.getName() == "do" || data.getName() == "few" || data.getName() == "there"
-                || data.getName() == "up" || data.getName() == "down") {
+            string lowerCase = Word::toLowerCase(data.getName());
+            if (lowerCase == "," || lowerCase == "." || lowerCase == ";" || lowerCase == "..."
+                || lowerCase.find('*') != string::npos || lowerCase == "at" || lowerCase == "the"
+                || lowerCase == "to" || lowerCase == "a" || lowerCase == "an"
+                || lowerCase == "not" || lowerCase == "is" || lowerCase == "was"
+                || lowerCase == "were" || lowerCase == "have" || lowerCase == "had"
+                || lowerCase == "has" || lowerCase == "!" || lowerCase == "?"
+                || lowerCase == "by" || lowerCase == "at" || lowerCase == "on"
+                || lowerCase == "off" || lowerCase == "'s" || lowerCase == "n't"
+                || lowerCase == "can" || lowerCase == "could" || lowerCase == "may"
+                || lowerCase == "might" || lowerCase == "will" || lowerCase == "would"
+                || lowerCase == "''" || lowerCase == "'" || lowerCase == "\""
+                || lowerCase == "\"\"" || lowerCase == "as" || lowerCase == "with"
+                || lowerCase == "for" || lowerCase == "will" || lowerCase == "would"
+                || lowerCase == "than" || lowerCase == "``" || lowerCase == "$"
+                || lowerCase == "and" || lowerCase == "or" || lowerCase == "of"
+                || lowerCase == "are" || lowerCase == "be" || lowerCase == "been"
+                || lowerCase == "do" || lowerCase == "few" || lowerCase == "there"
+                || lowerCase == "up" || lowerCase == "down" || lowerCase == "in" || lowerCase == "'re") {
                 sum = 0;
             } else {
                 sum = 1;
