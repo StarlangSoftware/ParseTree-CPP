@@ -6,7 +6,7 @@
 #define PARSETREE_SYMBOL_H
 
 #include <vector>
-#include "Word.h"
+#include "Dictionary/Word.h"
 
 class Symbol : public Word{
 private:
