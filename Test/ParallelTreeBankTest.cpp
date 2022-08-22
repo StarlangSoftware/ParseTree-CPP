@@ -3,7 +3,7 @@
 //
 
 #include "catch.hpp"
-#include "../ParallelTreeBank.h"
+#include "../src/ParallelTreeBank.h"
 
 TEST_CASE("ParallelTreeBankTest-testTreeBank") {
     ParallelTreeBank parallelTreeBank = ParallelTreeBank("trees", "fileList.txt", "trees2", "fileList2.txt");

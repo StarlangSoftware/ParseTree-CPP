@@ -3,10 +3,10 @@
 //
 
 #include "catch.hpp"
-#include "../ParseTree.h"
-#include "../NodeCollector.h"
-#include "../NodeCondition/IsLeaf.h"
-#include "../NodeCondition/IsEnglishLeaf.h"
+#include "../src/ParseTree.h"
+#include "../src/NodeCollector.h"
+#include "../src/NodeCondition/IsLeaf.h"
+#include "../src/NodeCondition/IsEnglishLeaf.h"
 
 TEST_CASE("NodeCollectorTest-testCollectLeaf") {
     ParseTree *parseTree1, *parseTree2, *parseTree3, *parseTree4, *parseTree5;

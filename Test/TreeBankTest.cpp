@@ -3,7 +3,7 @@
 //
 
 #include "catch.hpp"
-#include "../TreeBank.h"
+#include "../src/TreeBank.h"
 
 TEST_CASE("TreeBankTest-testTreeBank") {
     TreeBank treeBank1 = TreeBank("trees", "fileList.txt");

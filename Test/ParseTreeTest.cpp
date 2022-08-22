@@ -3,7 +3,7 @@
 //
 
 #include "catch.hpp"
-#include "../ParseTree.h"
+#include "../src/ParseTree.h"
 
 TEST_CASE("ParseTreeTest-testNodeCount") {
     ParseTree *parseTree1, *parseTree2, *parseTree3, *parseTree4, *parseTree5;
