@@ -19,7 +19,7 @@ void TreeBank::stripPunctuation() {
  * Returns number of trees in the TreeBank.
  * @return Number of trees in the TreeBank.
  */
-int TreeBank::size() {
+int TreeBank::size() const{
     return parseTrees.size();
 }
 
@@ -29,7 +29,7 @@ int TreeBank::size() {
  * @param excludeStopWords If true, stop words are not included in the count process.
  * @return Number of all words in all parseTrees in the TreeBank.
  */
-int TreeBank::wordCount(bool excludeStopWords) {
+int TreeBank::wordCount(bool excludeStopWords) const{
     int count = 0;
     for (ParseTree* tree:parseTrees){
         count += tree->wordCount(excludeStopWords);
@@ -42,7 +42,7 @@ int TreeBank::wordCount(bool excludeStopWords) {
  * @param index Index of the parseTree.
  * @return The ParseTree at the given index.
  */
-ParseTree* TreeBank::get(int index) {
+ParseTree* TreeBank::get(int index) const{
     return parseTrees.at(index);
 }
 

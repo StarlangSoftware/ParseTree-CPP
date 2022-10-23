@@ -17,11 +17,11 @@ public:
     ParallelTreeBank();
     ~ParallelTreeBank();
     ParallelTreeBank(const string& folder1, const string& folder2);
-    int size();
-    ParseTree* fromTree(int index);
-    ParseTree* toTree(int index);
-    TreeBank* getFromTreeBank();
-    TreeBank* getToTreeBank();
+    int size() const;
+    ParseTree* fromTree(int index) const;
+    ParseTree* toTree(int index) const;
+    TreeBank* getFromTreeBank() const;
+    TreeBank* getToTreeBank() const;
 };
 
 

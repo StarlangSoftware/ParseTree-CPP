@@ -15,7 +15,7 @@ private:
     int end;
 public:
     ConstituentSpan(const Symbol& _constituent, int _start, int _end);
-    Symbol getConstituent();
+    Symbol getConstituent() const;
     int getStart() const;
     int getEnd() const;
 };

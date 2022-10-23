@@ -34,23 +34,23 @@ ParallelTreeBank::ParallelTreeBank(const string &folder1, const string &folder2)
     removeDifferentTrees();
 }
 
-int ParallelTreeBank::size() {
+int ParallelTreeBank::size() const{
     return fromTreeBank->size();
 }
 
-ParseTree *ParallelTreeBank::fromTree(int index) {
+ParseTree *ParallelTreeBank::fromTree(int index) const{
     return fromTreeBank->get(index);
 }
 
-ParseTree *ParallelTreeBank::toTree(int index) {
+ParseTree *ParallelTreeBank::toTree(int index) const{
     return toTreeBank->get(index);
 }
 
-TreeBank* ParallelTreeBank::getFromTreeBank() {
+TreeBank* ParallelTreeBank::getFromTreeBank() const{
     return fromTreeBank;
 }
 
-TreeBank* ParallelTreeBank::getToTreeBank() {
+TreeBank* ParallelTreeBank::getToTreeBank() const{
     return toTreeBank;
 }
 

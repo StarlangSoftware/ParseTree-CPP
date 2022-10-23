@@ -17,11 +17,11 @@ private:
     string VPLabel = "VP";
 public:
     explicit Symbol(const string& name);
-    bool isVerb();
-    bool isVP();
-    bool isTerminal();
-    bool isChunkLabel();
-    Symbol trimSymbol();
+    bool isVerb() const;
+    bool isVP() const;
+    bool isTerminal() const;
+    bool isChunkLabel() const;
+    Symbol trimSymbol() const;
     static bool contains(const vector<string>& list, const string& searchedItem);
     bool operator==(const Symbol &anotherSymbol) const{
         return (name == anotherSymbol.name);

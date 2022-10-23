@@ -12,10 +12,10 @@ class NodeCollector {
 private:
     NodeCondition* condition;
     ParseNode* rootNode;
-    void collectNodes(ParseNode* parseNode, vector<ParseNode*>& collected);
+    void collectNodes(ParseNode* parseNode, vector<ParseNode*>& collected) const;
 public:
     NodeCollector(ParseNode* rootNode, NodeCondition* condition);
-    vector<ParseNode*> collect();
+    vector<ParseNode*> collect() const;
 };
 
 

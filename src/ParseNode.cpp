@@ -121,7 +121,7 @@ ParseNode::ParseNode(const Symbol& data) {
  *                    child on the right depending on the search direction.
  * @return Head node of the children of the current node
  */
-ParseNode *ParseNode::searchHeadChild(const vector<string>& priorityList, SearchDirectionType direction, bool defaultCase) {
+ParseNode *ParseNode::searchHeadChild(const vector<string>& priorityList, SearchDirectionType direction, bool defaultCase) const{
     switch (direction){
         case SearchDirectionType::LEFT:
             for (const string &item : priorityList) {
@@ -157,7 +157,7 @@ ParseNode *ParseNode::searchHeadChild(const vector<string>& priorityList, Search
  * successors.
  * @return Head node of the descendant leaves of this current node.
  */
-ParseNode *ParseNode::headLeaf() {
+ParseNode *ParseNode::headLeaf(){
     if (!children.empty()){
         ParseNode* head = headChild();
         if (head != nullptr){
@@ -175,7 +175,7 @@ ParseNode *ParseNode::headLeaf() {
  * the search priority list is determined according to the symbol in this current parent node.
  * @return Head node among its children of this current node.
  */
-ParseNode *ParseNode::headChild() {
+ParseNode *ParseNode::headChild() const{
     ParseNode* result;
     string headSymbol = data.trimSymbol().to_string();
     if (headSymbol == "ADJP") {
@@ -309,7 +309,7 @@ ParseNode *ParseNode::headChild() {
  * Returns an iterator for the child nodes of this {@link ParseNode}.
  * @return Iterator for the children of thid very node.
  */
-vector<ParseNode *>::iterator ParseNode::getChildIterator() {
+vector<ParseNode *>::iterator ParseNode::getChildIterator(){
     return children.begin();
 }
 
@@ -387,7 +387,7 @@ void ParseNode::removeChild(ParseNode* child) {
  * Recursive method to calculate the number of all leaf nodes in the subtree rooted with this current node.
  * @return Number of all leaf nodes in the current subtree.
  */
-int ParseNode::leafCount() {
+int ParseNode::leafCount() const{
     if (children.empty()){
         return 1;
     } else {
@@ -403,7 +403,7 @@ int ParseNode::leafCount() {
  * Recursive method to calculate the number of all nodes in the subtree rooted with this current node.
  * @return Number of all nodes in the current subtree.
  */
-int ParseNode::nodeCount() {
+int ParseNode::nodeCount() const{
     if (!children.empty()){
         int sum = 1;
         for (ParseNode* child: children){
@@ -420,7 +420,7 @@ int ParseNode::nodeCount() {
  * with this current node.
  * @return Number of all nodes, which have more than one children, in the current subtree.
  */
-int ParseNode::nodeCountWithMultipleChildren() {
+int ParseNode::nodeCountWithMultipleChildren() const{
     if (children.size() > 1){
         int sum = 1;
         for (ParseNode* child: children){
@@ -452,7 +452,7 @@ void ParseNode::stripPunctuation() {
  * Returns number of children of this node.
  * @return Number of children of this node.
  */
-int ParseNode::numberOfChildren() {
+int ParseNode::numberOfChildren() const{
     return children.size();
 }
 
@@ -461,7 +461,7 @@ int ParseNode::numberOfChildren() {
  * @param i Index of the retrieved node.
  * @return i'th child of this node.
  */
-ParseNode *ParseNode::getChild(int i) {
+ParseNode *ParseNode::getChild(int i) const{
     return children.at(i);
 }
 
@@ -469,7 +469,7 @@ ParseNode *ParseNode::getChild(int i) {
  * Returns the first child of this node.
  * @return First child of this node.
  */
-ParseNode *ParseNode::firstChild() {
+ParseNode *ParseNode::firstChild() const{
     return children.at(0);
 }
 
@@ -477,7 +477,7 @@ ParseNode *ParseNode::firstChild() {
  * Returns the last child of this node.
  * @return Last child of this node.
  */
-ParseNode *ParseNode::lastChild() {
+ParseNode *ParseNode::lastChild() const{
     return children.at(children.size() - 1);
 }
 
@@ -486,7 +486,7 @@ ParseNode *ParseNode::lastChild() {
  * @param child To be checked node.
  * @return True, if child is the last child of this node, false otherwise.
  */
-bool ParseNode::isLastChild(ParseNode *child) {
+bool ParseNode::isLastChild(ParseNode *child) const{
     return children.at(children.size() - 1) == child;
 }
 
@@ -495,7 +495,7 @@ bool ParseNode::isLastChild(ParseNode *child) {
  * @return If this is the first child of its parent, returns null. Otherwise, returns the previous sibling of this
  * node.
  */
-ParseNode *ParseNode::previousSibling() {
+ParseNode *ParseNode::previousSibling() const{
     for (int i = 1; i < parent->children.size(); i++){
         if (parent->children.at(i) == this){
             return parent->children.at(i - 1);
@@ -509,7 +509,7 @@ ParseNode *ParseNode::previousSibling() {
  * @return If this is the last child of its parent, returns null. Otherwise, returns the next sibling of this
  * node.
  */
-ParseNode *ParseNode::nextSibling() {
+ParseNode *ParseNode::nextSibling() const{
     for (int i = 0; i < parent->children.size() - 1; i++){
         if (parent->children.at(i) == this){
             return parent->children.at(i + 1);
@@ -522,7 +522,7 @@ ParseNode *ParseNode::nextSibling() {
  * Accessor for the parent attribute.
  * @return Parent of this node.
  */
-ParseNode *ParseNode::getParent() {
+ParseNode *ParseNode::getParent() const{
     return parent;
 }
 
@@ -530,7 +530,7 @@ ParseNode *ParseNode::getParent() {
  * Accessor for the data attribute.
  * @return Data of this node.
  */
-Symbol ParseNode::getData() {
+Symbol ParseNode::getData() const{
     return data;
 }
 
@@ -547,7 +547,7 @@ void ParseNode::setData(const Symbol& _data) {
  * @param excludeStopWords If true, stop words are not counted.
  * @return Number of words in the subtree rooted at this node.
  */
-int ParseNode::wordCount(bool excludeStopWords) {
+int ParseNode::wordCount(bool excludeStopWords) const{
     int sum;
     if (children.empty()){
         if (!excludeStopWords){
@@ -591,7 +591,7 @@ int ParseNode::wordCount(bool excludeStopWords) {
  * Returns true if this node is leaf, false otherwise.
  * @return true if this node is leaf, false otherwise.
  */
-bool ParseNode::isLeaf() {
+bool ParseNode::isLeaf() const{
     return children.empty();
 }
 
@@ -599,7 +599,7 @@ bool ParseNode::isLeaf() {
  * Returns true if this node does not contain a meaningful data, false otherwise.
  * @return true if this node does not contain a meaningful data, false otherwise.
  */
-bool ParseNode::isDummyNode() {
+bool ParseNode::isDummyNode() const{
     return getData().getName().find('*') != string::npos || (getData().getName() == "0" && parent->getData().getName() == "-NONE-");
 }
 
@@ -607,7 +607,7 @@ bool ParseNode::isDummyNode() {
  * Recursive function to convert the subtree rooted at this node to a sentence.
  * @return A sentence which contains all words in the subtree rooted at this node.
  */
-string ParseNode::toSentence() {
+string ParseNode::toSentence() const{
     if (children.empty()){
         if (!getData().getName().empty() && !isDummyNode()){
             return " " + Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(getData().getName(), "-LRB-", "("), "-RRB-", ")"), "-LSB-", "["), "-RSB-", "]"), "-LCB-", "{"), "-RCB-", "}"), "-lrb-", "("), "-rrb-", ")"), "-lsb-", "["), "-rsb-", "]"), "-lcb-", "{"), "-rcb-", "}");
@@ -631,7 +631,7 @@ string ParseNode::toSentence() {
  * Recursive function to convert the subtree rooted at this node to a string.
  * @return A string which contains all words in the subtree rooted at this node.
  */
-string ParseNode::to_string() {
+string ParseNode::to_string() const{
     if (children.size() < 2){
         if (children.empty()){
             return getData().getName();
@@ -673,7 +673,7 @@ void ParseNode::moveLeft(ParseNode *node) {
  * Recursive function to concatenate the data of the all ascendant nodes of this node to a string.
  * @return A string which contains all data of all the ascendant nodes of this node.
  */
-string ParseNode::ancestorString() {
+string ParseNode::ancestorString() const{
     if (parent == nullptr){
         return data.getName();
     } else {
@@ -707,7 +707,7 @@ void ParseNode::moveRight(ParseNode *node) {
  * Returns the index of the given child of this node.
  * @return Index of the child of this node.
  */
-int ParseNode::getChildIndex(ParseNode *child) {
+int ParseNode::getChildIndex(ParseNode *child) const{
     int i;
     for (i = 0; i < children.size(); i++) {
         if (children.at(i) == child) {
@@ -721,7 +721,7 @@ int ParseNode::getChildIndex(ParseNode *child) {
  * Returns true if the given node is a descendant of this node.
  * @return True if the given node is descendant of this node.
  */
-bool ParseNode::isDescendant(ParseNode *node) {
+bool ParseNode::isDescendant(ParseNode *node) const{
     for (ParseNode* aChild: children){
         if (aChild == node){
             return true;
@@ -739,7 +739,7 @@ bool ParseNode::isDescendant(ParseNode *node) {
  * @param startIndex Start index of the leftmost leaf node of this subtree.
  * @param list Returned span list.
  */
-void ParseNode::constituentSpanList(int startIndex, vector<ConstituentSpan>& list) {
+void ParseNode::constituentSpanList(int startIndex, vector<ConstituentSpan>& list) const{
     if (!children.empty()){
         list.emplace_back(ConstituentSpan(data, startIndex, startIndex + leafCount()));
     }

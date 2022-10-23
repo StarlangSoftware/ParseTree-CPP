@@ -25,22 +25,22 @@ public:
     explicit ParseTree(istream& inputFile);
     explicit ParseTree(const string& fileName);
     void setName(const string& _name);
-    string getName();
-    ParseNode* nextLeafNode(ParseNode* parseNode);
-    ParseNode* previousLeafNode(ParseNode* parseNode);
-    int nodeCountWithMultipleChildren();
-    int nodeCount();
-    int leafCount();
-    bool isFullSentence();
-    vector<ConstituentSpan> constituentSpanList();
+    string getName() const;
+    ParseNode* nextLeafNode(ParseNode* parseNode) const;
+    ParseNode* previousLeafNode(ParseNode* parseNode) const;
+    int nodeCountWithMultipleChildren() const;
+    int nodeCount() const;
+    int leafCount() const;
+    bool isFullSentence() const;
+    vector<ConstituentSpan> constituentSpanList() const;
     void save(const string& fileName);
     void correctParents();
     void removeXNodes();
     void stripPunctuation();
-    ParseNode* getRoot();
-    string toSentence();
-    string to_string();
-    int wordCount(bool excludeStopWords);
+    ParseNode* getRoot() const;
+    string toSentence() const;
+    string to_string() const;
+    int wordCount(bool excludeStopWords) const;
 };
 
 

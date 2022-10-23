@@ -24,7 +24,7 @@ Symbol::Symbol(const string& name) : Word(name) {
  * Checks if this symbol is a verb type.
  * @return True if the symbol is a verb, false otherwise.
  */
-bool Symbol::isVerb() {
+bool Symbol::isVerb() const{
     return contains(verbLabels, name);
 }
 
@@ -32,7 +32,7 @@ bool Symbol::isVerb() {
  * Checks if the symbol is VP or not.
  * @return True if the symbol is VB, false otherwise.
  */
-bool Symbol::isVP() {
+bool Symbol::isVP() const{
     return name == VPLabel;
 }
 
@@ -41,7 +41,7 @@ bool Symbol::isVP() {
  * if it starts with a lowercase symbol.
  * @return True if this symbol is a terminal symbol, false otherwise.
  */
-bool Symbol::isTerminal() {
+bool Symbol::isTerminal() const{
     int i;
     if (name == "," || name == "." || name == "!" || name == "?" || name == ":"
         || name == ";" || name == "\"" || name == "''" || name == "'" || name == "`"
@@ -64,7 +64,7 @@ bool Symbol::isTerminal() {
  * Checks if this symbol can be a chunk label or not.
  * @return True if this symbol can be a chunk label, false otherwise.
  */
-bool Symbol::isChunkLabel() {
+bool Symbol::isChunkLabel() const{
     if (Word::isPunctuation(name) || contains(sentenceLabels, Word::replaceAll(name, "-.*","")) || contains(phraseLabels, Word::replaceAll(name, "-.*", "")))
         return true;
     return false;
@@ -84,7 +84,7 @@ bool Symbol::contains(const vector<string>& list, const string& searchedItem) {
  * the resulting string.
  * @return Trimmed symbol.
  */
-Symbol Symbol::trimSymbol() {
+Symbol Symbol::trimSymbol() const{
     int minusIndex, equalIndex;
     if (Word::startsWith(name, "-") || (name.find('-') == string::npos && name.find('=') == string::npos)){
         return *this;

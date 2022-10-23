@@ -16,9 +16,9 @@ public:
     ~TreeBank();
     TreeBank(const string& folder);
     void stripPunctuation();
-    int size();
-    int wordCount(bool excludeStopWords);
-    ParseTree* get(int index);
+    int size() const;
+    int wordCount(bool excludeStopWords) const;
+    ParseTree* get(int index) const;
     void removeTree(int index);
 };
 

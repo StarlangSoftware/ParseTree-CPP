@@ -10,7 +10,7 @@ ConstituentSpan::ConstituentSpan(const Symbol& _constituent, int _start, int _en
     this->end = _end;
 }
 
-Symbol ConstituentSpan::getConstituent() {
+Symbol ConstituentSpan::getConstituent() const{
     return constituent;
 }
 

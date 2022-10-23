@@ -52,7 +52,7 @@ void ParseTree::setName(const string& _name) {
     this->name = _name;
 }
 
-string ParseTree::getName(){
+string ParseTree::getName() const{
     return name;
 }
 
@@ -61,7 +61,7 @@ string ParseTree::getName(){
  * @param parseNode ParseNode for which next node is calculated.
  * @return Next leaf node after the given leaf node.
  */
-ParseNode *ParseTree::nextLeafNode(ParseNode *parseNode) {
+ParseNode *ParseTree::nextLeafNode(ParseNode *parseNode) const{
     NodeCollector nodeCollector = NodeCollector(root, new IsEnglishLeaf());
     vector<ParseNode*> leafList = nodeCollector.collect();
     for (int i = 0; i < leafList.size() - 1; i++){
@@ -77,7 +77,7 @@ ParseNode *ParseTree::nextLeafNode(ParseNode *parseNode) {
  * @param parseNode ParseNode for which previous node is calculated.
  * @return Previous leaf node before the given leaf node.
  */
-ParseNode *ParseTree::previousLeafNode(ParseNode *parseNode) {
+ParseNode *ParseTree::previousLeafNode(ParseNode *parseNode) const{
     NodeCollector nodeCollector = NodeCollector(root, new IsEnglishLeaf());
     vector<ParseNode*> leafList = nodeCollector.collect();
     for (int i = 1; i < leafList.size(); i++){
@@ -92,7 +92,7 @@ ParseNode *ParseTree::previousLeafNode(ParseNode *parseNode) {
  * Calls recursive method to calculate the number of all nodes, which have more than one children.
  * @return Number of all nodes, which have more than one children.
  */
-int ParseTree::nodeCountWithMultipleChildren() {
+int ParseTree::nodeCountWithMultipleChildren() const{
     return root->nodeCountWithMultipleChildren();
 }
 
@@ -100,7 +100,7 @@ int ParseTree::nodeCountWithMultipleChildren() {
  * Calls recursive method to calculate the number of all nodes tree.
  * @return Number of all nodes in the tree.
  */
-int ParseTree::nodeCount() {
+int ParseTree::nodeCount() const{
     return root->nodeCount();
 }
 
@@ -108,11 +108,11 @@ int ParseTree::nodeCount() {
  * Calls recursive method to calculate the number of all leaf nodes in the tree.
  * @return Number of all leaf nodes in the tree.
  */
-int ParseTree::leafCount() {
+int ParseTree::leafCount() const{
     return root->leafCount();
 }
 
-bool ParseTree::isFullSentence() {
+bool ParseTree::isFullSentence() const{
     if (root != nullptr && Symbol::contains(sentenceLabels, root->getData().getName())){
         return true;
     }
@@ -136,7 +136,7 @@ void ParseTree::save(const string& fileName) {
  * Calls recursive function to convert the tree to a string.
  * @return A string which contains all words in the tree.
  */
-string ParseTree::to_string() {
+string ParseTree::to_string() const{
     return root->to_string();
 }
 
@@ -166,7 +166,7 @@ void ParseTree::stripPunctuation() {
  * Accessor method for the root node.
  * @return Root node
  */
-ParseNode *ParseTree::getRoot() {
+ParseNode *ParseTree::getRoot() const{
     return root;
 }
 
@@ -174,7 +174,7 @@ ParseNode *ParseTree::getRoot() {
  * Calls recursive function to convert the tree to a sentence.
  * @return A sentence which contains all words in the tree.
  */
-string ParseTree::toSentence() {
+string ParseTree::toSentence() const{
     return Word::trim(root->toSentence());
 }
 
@@ -183,7 +183,7 @@ string ParseTree::toSentence() {
  * @param excludeStopWords If true, stop words are not counted.
  * @return Number of words in the tree.
  */
-int ParseTree::wordCount(bool excludeStopWords) {
+int ParseTree::wordCount(bool excludeStopWords) const{
     return root->wordCount(excludeStopWords);
 }
 
@@ -195,7 +195,7 @@ ParseTree::~ParseTree() {
  * Generates a list of constituents in the parse tree and their spans.
  * @return A list of constituents in the parse tree and their spans.
  */
-vector<ConstituentSpan> ParseTree::constituentSpanList() {
+vector<ConstituentSpan> ParseTree::constituentSpanList() const{
     vector<ConstituentSpan> result;
     if (root != nullptr){
         root->constituentSpanList(1, result);

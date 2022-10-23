@@ -21,7 +21,7 @@ NodeCollector::NodeCollector(ParseNode *rootNode, NodeCondition *condition) {
  * @param parseNode Root node of the subtree
  * @param collected The {@link ArrayList} where the collected ParseNode's will be stored.
  */
-void NodeCollector::collectNodes(ParseNode *parseNode, vector<ParseNode *> &collected) {
+void NodeCollector::collectNodes(ParseNode *parseNode, vector<ParseNode *> &collected) const{
     if (condition == nullptr || condition->satisfies(parseNode)){
         collected.push_back(parseNode);
     }
@@ -34,7 +34,7 @@ void NodeCollector::collectNodes(ParseNode *parseNode, vector<ParseNode *> &coll
  * Collects and returns all ParseNode's satisfying the node condition.
  * @return All ParseNode's satisfying the node condition.
  */
-vector<ParseNode *> NodeCollector::collect() {
+vector<ParseNode *> NodeCollector::collect() const{
     vector<ParseNode*> result;
     collectNodes(rootNode, result);
     return result;
