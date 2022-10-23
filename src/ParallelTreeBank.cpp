@@ -28,10 +28,9 @@ void ParallelTreeBank::removeDifferentTrees() {
     }
 }
 
-ParallelTreeBank::ParallelTreeBank(const string &folder1, const string &fileList1, const string &folder2,
-                                   const string &fileList2) {
-    fromTreeBank = new TreeBank(folder1, fileList1);
-    toTreeBank = new TreeBank(folder2, fileList2);
+ParallelTreeBank::ParallelTreeBank(const string &folder1, const string &folder2) {
+    fromTreeBank = new TreeBank(folder1);
+    toTreeBank = new TreeBank(folder2);
     removeDifferentTrees();
 }
 

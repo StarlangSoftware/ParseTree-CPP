@@ -16,7 +16,7 @@ protected:
 public:
     ParallelTreeBank();
     ~ParallelTreeBank();
-    ParallelTreeBank(const string& folder1, const string& fileList1, const string& folder2, const string& fileList2);
+    ParallelTreeBank(const string& folder1, const string& folder2);
     int size();
     ParseTree* fromTree(int index);
     ParseTree* toTree(int index);

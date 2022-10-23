@@ -46,7 +46,7 @@ ParseNode::~ParseNode(){
  * @param line The input line to create this parseNode.
  * @param isLeaf True, if this node is a leaf node; false otherwise.
  */
-ParseNode::ParseNode(ParseNode *parent, string line, bool isLeaf) {
+ParseNode::ParseNode(ParseNode *parent, const string& line, bool isLeaf) {
     int parenthesisCount = 0;
     string childLine;
     this->parent = parent;
@@ -57,7 +57,7 @@ ParseNode::ParseNode(ParseNode *parent, string line, bool isLeaf) {
         if (line.find(')') == line.find_last_of(')')){
             children.push_back(new ParseNode(this, line.substr(line.find(' ') + 1, line.find(')') - line.find(' ') - 1), true));
         } else {
-            for (int i = line.find(" ") + 1; i < line.size(); i++){
+            for (int i = line.find(' ') + 1; i < line.size(); i++){
                 if (line[i] != ' ' || parenthesisCount > 0){
                     childLine += line[i];
                 }
@@ -84,12 +84,12 @@ ParseNode::ParseNode(ParseNode *parent, string line, bool isLeaf) {
  * @param right Right child of this node.
  * @param data Data for this node.
  */
-ParseNode::ParseNode(ParseNode *left, ParseNode* right, Symbol data) {
+ParseNode::ParseNode(ParseNode *left, ParseNode* right, const Symbol& data) {
     children.push_back(left);
     left->parent = this;
     children.push_back(right);
     right->parent = this;
-    this->data = move(data);
+    this->data = data;
 }
 
 /**
@@ -98,18 +98,18 @@ ParseNode::ParseNode(ParseNode *left, ParseNode* right, Symbol data) {
  * @param left Left child of this node.
  * @param data Data for this node.
  */
-ParseNode::ParseNode(ParseNode *left, Symbol data) {
+ParseNode::ParseNode(ParseNode *left, const Symbol& data) {
     children.push_back(left);
     left->parent = this;
-    this->data = move(data);
+    this->data = data;
 }
 
 /**
  * Another simple constructor for ParseNode. It only take input the data, and sets it.
  * @param data Data for this node.
  */
-ParseNode::ParseNode(Symbol data) {
-    this->data = move(data);
+ParseNode::ParseNode(const Symbol& data) {
+    this->data = data;
 }
 
 /**
@@ -121,7 +121,7 @@ ParseNode::ParseNode(Symbol data) {
  *                    child on the right depending on the search direction.
  * @return Head node of the children of the current node
  */
-ParseNode *ParseNode::searchHeadChild(vector<string> priorityList, SearchDirectionType direction, bool defaultCase) {
+ParseNode *ParseNode::searchHeadChild(const vector<string>& priorityList, SearchDirectionType direction, bool defaultCase) {
     switch (direction){
         case SearchDirectionType::LEFT:
             for (const string &item : priorityList) {
@@ -158,7 +158,7 @@ ParseNode *ParseNode::searchHeadChild(vector<string> priorityList, SearchDirecti
  * @return Head node of the descendant leaves of this current node.
  */
 ParseNode *ParseNode::headLeaf() {
-    if (children.size() > 0){
+    if (!children.empty()){
         ParseNode* head = headChild();
         if (head != nullptr){
             return head->headLeaf();
@@ -536,10 +536,10 @@ Symbol ParseNode::getData() {
 
 /**
  * Mutator of the data attribute.
- * @param data Data to be set.
+ * @param _data Data to be set.
  */
-void ParseNode::setData(Symbol data) {
-    this->data = move(data);
+void ParseNode::setData(const Symbol& _data) {
+    this->data = _data;
 }
 
 /**
@@ -740,7 +740,7 @@ bool ParseNode::isDescendant(ParseNode *node) {
  * @param list Returned span list.
  */
 void ParseNode::constituentSpanList(int startIndex, vector<ConstituentSpan>& list) {
-    if (children.size() > 0){
+    if (!children.empty()){
         list.emplace_back(ConstituentSpan(data, startIndex, startIndex + leafCount()));
     }
     int total = 0;

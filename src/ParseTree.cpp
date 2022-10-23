@@ -34,7 +34,7 @@ ParseTree::ParseTree(istream &inputFile) {
     }
 }
 
-ParseTree::ParseTree(string fileName) {
+ParseTree::ParseTree(const string& fileName) {
     ifstream inputFile;
     inputFile.open(fileName, ifstream::in);
     string line;
@@ -48,8 +48,8 @@ ParseTree::ParseTree(string fileName) {
     inputFile.close();
 }
 
-void ParseTree::setName(string name) {
-    this->name = move(name);
+void ParseTree::setName(const string& _name) {
+    this->name = _name;
 }
 
 string ParseTree::getName(){
@@ -197,7 +197,7 @@ ParseTree::~ParseTree() {
  */
 vector<ConstituentSpan> ParseTree::constituentSpanList() {
     vector<ConstituentSpan> result;
-    if (root != NULL){
+    if (root != nullptr){
         root->constituentSpanList(1, result);
     }
     return result;

@@ -23,8 +23,8 @@ public:
     ~ParseTree();
     explicit ParseTree(ParseNode* root);
     explicit ParseTree(istream& inputFile);
-    explicit ParseTree(string fileName);
-    void setName(string name);
+    explicit ParseTree(const string& fileName);
+    void setName(const string& _name);
     string getName();
     ParseNode* nextLeafNode(ParseNode* parseNode);
     ParseNode* previousLeafNode(ParseNode* parseNode);

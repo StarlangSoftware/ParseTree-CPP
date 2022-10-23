@@ -14,10 +14,10 @@ private:
     int start;
     int end;
 public:
-    ConstituentSpan(Symbol constituent, int start, int end);
+    ConstituentSpan(const Symbol& _constituent, int _start, int _end);
     Symbol getConstituent();
-    int getStart();
-    int getEnd();
+    int getStart() const;
+    int getEnd() const;
 };
 
 

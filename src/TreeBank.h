@@ -14,7 +14,7 @@ protected:
 public:
     TreeBank() = default;
     ~TreeBank();
-    TreeBank(const string& folder, const string& fileList);
+    TreeBank(const string& folder);
     void stripPunctuation();
     int size();
     int wordCount(bool excludeStopWords);

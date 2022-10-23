@@ -42,7 +42,7 @@ private:
     static const vector<string> NP3;
     static const vector<string> NP4;
     static const vector<string> NP5;
-    ParseNode* searchHeadChild(vector<string> priorityList, SearchDirectionType direction, bool defaultCase);
+    ParseNode* searchHeadChild(const vector<string>& priorityList, SearchDirectionType direction, bool defaultCase);
 protected:
     vector<ParseNode*> children;
     ParseNode* parent = nullptr;
@@ -50,10 +50,10 @@ protected:
 public:
     ParseNode() = default;
     ~ParseNode();
-    ParseNode(ParseNode* parent, string line, bool isLeaf);
-    ParseNode(ParseNode* left, ParseNode* right, Symbol data);
-    ParseNode(ParseNode* left, Symbol data);
-    explicit ParseNode(Symbol data);
+    ParseNode(ParseNode* parent, const string& line, bool isLeaf);
+    ParseNode(ParseNode* left, ParseNode* right, const Symbol& data);
+    ParseNode(ParseNode* left, const Symbol& data);
+    explicit ParseNode(const Symbol& data);
     ParseNode* headLeaf();
     ParseNode* headChild();
     vector<ParseNode*>::iterator getChildIterator();
@@ -78,7 +78,7 @@ public:
     ParseNode* nextSibling();
     ParseNode* getParent();
     Symbol getData();
-    void setData(Symbol data);
+    void setData(const Symbol& _data);
     int wordCount(bool excludeStopWords);
     void constituentSpanList(int startIndex, vector<ConstituentSpan>& list);
     bool isLeaf();

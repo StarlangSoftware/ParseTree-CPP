@@ -4,20 +4,20 @@
 
 #include "ConstituentSpan.h"
 
-ConstituentSpan::ConstituentSpan(Symbol constituent, int start, int end){
-    this->constituent = constituent;
-    this->start = start;
-    this->end = end;
+ConstituentSpan::ConstituentSpan(const Symbol& _constituent, int _start, int _end){
+    this->constituent = _constituent;
+    this->start = _start;
+    this->end = _end;
 }
 
 Symbol ConstituentSpan::getConstituent() {
     return constituent;
 }
 
-int ConstituentSpan::getStart() {
+int ConstituentSpan::getStart() const {
     return start;
 }
 
-int ConstituentSpan::getEnd() {
+int ConstituentSpan::getEnd() const {
     return end;
 }

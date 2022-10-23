@@ -16,13 +16,13 @@ private:
     static const vector<string> verbLabels;
     string VPLabel = "VP";
 public:
-    explicit Symbol(string name);
+    explicit Symbol(const string& name);
     bool isVerb();
     bool isVP();
     bool isTerminal();
     bool isChunkLabel();
     Symbol trimSymbol();
-    static bool contains(vector<string> list, string searchedItem);
+    static bool contains(const vector<string>& list, const string& searchedItem);
     bool operator==(const Symbol &anotherSymbol) const{
         return (name == anotherSymbol.name);
     }

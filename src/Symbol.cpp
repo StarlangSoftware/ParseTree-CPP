@@ -17,7 +17,7 @@ const vector<string> Symbol::verbLabels = {"VB", "VBD", "VBG", "VBN","VBP", "VBZ
  * Constructor for Symbol class. Sets the name attribute.
  * @param name Name attribute
  */
-Symbol::Symbol(string name) : Word(move(name)) {
+Symbol::Symbol(const string& name) : Word(name) {
 }
 
 /**
@@ -70,7 +70,7 @@ bool Symbol::isChunkLabel() {
     return false;
 }
 
-bool Symbol::contains(vector<string> list, string searchedItem) {
+bool Symbol::contains(const vector<string>& list, const string& searchedItem) {
     for (const string &item : list){
         if (item == searchedItem){
             return true;
