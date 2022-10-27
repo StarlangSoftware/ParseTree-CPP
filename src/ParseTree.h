@@ -20,7 +20,6 @@ protected:
     string name;
 public:
     ParseTree() = default;
-    ~ParseTree();
     explicit ParseTree(ParseNode* root);
     explicit ParseTree(istream& inputFile);
     explicit ParseTree(const string& fileName);
