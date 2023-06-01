@@ -51,7 +51,6 @@ ParseTree* TreeBank::get(int index) const{
  * file inside that folder, the constructor creates a ParseTree and puts in inside the list parseTrees.
  */
 TreeBank::TreeBank(const string& folder) {
-    ifstream treeBankFile;
     vector<string> files;
     for (const auto & file : directory_iterator(folder)) {
         if (!file.is_directory()) {
@@ -64,7 +63,6 @@ TreeBank::TreeBank(const string& folder) {
         parseTree->setName(file.substr(file.find_last_of('/') + 1));
         parseTrees.push_back(parseTree);
     }
-    treeBankFile.close();
 }
 
 TreeBank::~TreeBank() {
