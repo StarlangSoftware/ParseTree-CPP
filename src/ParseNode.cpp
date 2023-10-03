@@ -306,7 +306,7 @@ ParseNode *ParseNode::headChild() const{
 }
 
 /**
- * Returns an iterator for the child nodes of this {@link ParseNode}.
+ * Returns an iterator for the child nodes of this ParseNode.
  * @return Iterator for the children of thid very node.
  */
 vector<ParseNode *>::iterator ParseNode::getChildIterator(){

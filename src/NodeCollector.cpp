@@ -19,7 +19,7 @@ NodeCollector::NodeCollector(ParseNode *rootNode, NodeCondition *condition) {
 /**
  * Private recursive method to check all descendants of the parseNode, if they ever satisfy the given node condition
  * @param parseNode Root node of the subtree
- * @param collected The {@link ArrayList} where the collected ParseNode's will be stored.
+ * @param collected The ArrayList where the collected ParseNode's will be stored.
  */
 void NodeCollector::collectNodes(ParseNode *parseNode, vector<ParseNode *> &collected) const{
     if (condition == nullptr || condition->satisfies(parseNode)){
