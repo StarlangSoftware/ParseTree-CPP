@@ -6,6 +6,6 @@
 #include "../src/ParallelTreeBank.h"
 
 TEST_CASE("ParallelTreeBankTest-testTreeBank") {
-    ParallelTreeBank parallelTreeBank = ParallelTreeBank("../trees", "../trees2");
+    ParallelTreeBank parallelTreeBank = ParallelTreeBank("trees", "trees2");
     REQUIRE(3 == parallelTreeBank.size());
 }
