@@ -16,6 +16,7 @@ private:
     static const vector<string> verbLabels;
     string VPLabel = "VP";
 public:
+    Symbol() = default;
     explicit Symbol(const string& name);
     bool isVerb() const;
     bool isVP() const;
