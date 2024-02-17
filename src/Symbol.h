@@ -30,6 +30,9 @@ public:
     bool operator<(const Symbol &anotherSymbol) const{
         return (name < anotherSymbol.name);
     }
+    bool operator>(const Symbol &anotherSymbol) const{
+        return (name > anotherSymbol.name);
+    }
 };
 
 
