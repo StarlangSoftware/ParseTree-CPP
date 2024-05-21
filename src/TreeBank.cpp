@@ -71,6 +71,10 @@ TreeBank::~TreeBank() {
     }
 }
 
+/**
+ * Removes the parse tree at position index from the treebank.
+ * @param index Position of the tree in the treebank.
+ */
 void TreeBank::removeTree(int index) {
     parseTrees.erase(parseTrees.begin() + index);
 }

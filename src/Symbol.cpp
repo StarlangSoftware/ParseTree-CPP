@@ -70,6 +70,12 @@ bool Symbol::isChunkLabel() const{
     return false;
 }
 
+/**
+ * Checks if a string is inside an array of strings.
+ * @param list Array of string
+ * @param searchedItem String to be searched.
+ * @return True if the string is inside the array, false otherwise.
+ */
 bool Symbol::contains(const vector<string>& list, const string& searchedItem) {
     for (const string &item : list){
         if (item == searchedItem){

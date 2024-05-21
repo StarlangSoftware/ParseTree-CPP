@@ -6,8 +6,8 @@
 #define PARSETREE_LEAFANCESTORMETRIC_H
 #include "Metric.h"
 #include "unordered_map"
-#include "NodeCollector.h"
-#include "NodeCondition/IsLeaf.h"
+#include "../NodeCollector.h"
+#include "../NodeCondition/IsLeaf.h"
 
 class LeafAncestorMetric : public Metric {
 private:

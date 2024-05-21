@@ -5,7 +5,7 @@
 #ifndef PARSETREE_METRIC_H
 #define PARSETREE_METRIC_H
 #include "vector"
-#include "ParallelTreeBank.h"
+#include "../ParallelTreeBank.h"
 
 using namespace std;
 

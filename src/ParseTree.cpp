@@ -34,6 +34,11 @@ ParseTree::ParseTree(istream &inputFile) {
     }
 }
 
+/**
+ * Anothr constructor of ParseTree. The method takes the file name of the parse tree file that contains a single line as
+ * input and constructs the whole tree by calling the ParseNode constructor recursively.
+ * @param fileName Name of the file containing a single line for a ParseTree
+ */
 ParseTree::ParseTree(const string& fileName) {
     ifstream inputFile;
     inputFile.open(fileName, ifstream::in);
@@ -48,10 +53,18 @@ ParseTree::ParseTree(const string& fileName) {
     inputFile.close();
 }
 
+/**
+ * Mutator for the name attribute.
+ * @param name Name of the parse tree.
+ */
 void ParseTree::setName(const string& _name) {
     this->name = _name;
 }
 
+/**
+ * Accessor for the name attribute.
+ * @return Name of the parse tree.
+ */
 string ParseTree::getName() const{
     return name;
 }

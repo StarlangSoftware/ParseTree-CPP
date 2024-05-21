@@ -3,10 +3,10 @@
 //
 #include "catch.hpp"
 #include "../src/ParseTree.h"
-#include "../src/LeafAncestorMetric.h"
-#include "../src/ModifiedLeafAncestorMetric.h"
-#include "../src/ParsevalMetric.h"
-#include "../src/ModifiedParsevalMetric.h"
+#include "../src/EvaluationMetrics/LeafAncestorMetric.h"
+#include "../src/EvaluationMetrics/ModifiedLeafAncestorMetric.h"
+#include "../src/EvaluationMetrics/ParsevalMetric.h"
+#include "../src/EvaluationMetrics/ModifiedParsevalMetric.h"
 
 TEST_CASE("testLeafAncestor") {
     auto* metric = new LeafAncestorMetric();
