@@ -5,6 +5,9 @@
 #include <ostream>
 #include <fstream>
 #include "ParseTree.h"
+
+#include <StringUtils.h>
+
 #include "NodeCollector.h"
 #include "NodeCondition/IsEnglishLeaf.h"
 
@@ -21,13 +24,13 @@ ParseTree::ParseTree(ParseNode *root) {
 /**
  * Another constructor of the ParseTree. The method takes the file containing a single line as input and constructs
  * the whole tree by calling the ParseNode constructor recursively.
- * @param file File containing a single line for a ParseTree
+ * @param inputFile File containing a single line for a ParseTree
  */
 ParseTree::ParseTree(istream &inputFile) {
     string line;
     getline(inputFile, line);
     if (line.find('(') != string::npos && line.find_last_of(')') != string::npos){
-        line = Word::trim(line.substr(line.find('(') + 1, line.find_last_of(')') - line.find('(') - 1));
+        line = StringUtils::trim(line.substr(line.find('(') + 1, line.find_last_of(')') - line.find('(') - 1));
         root = new ParseNode(nullptr, line, false);
     } else {
         root = nullptr;
@@ -45,7 +48,7 @@ ParseTree::ParseTree(const string& fileName) {
     string line;
     getline(inputFile, line);
     if (line.find('(') != string::npos && line.find_last_of(')') != string::npos){
-        line = Word::trim(line.substr(line.find('(') + 1, line.find_last_of(')') - line.find('(') - 1));
+        line = StringUtils::trim(line.substr(line.find('(') + 1, line.find_last_of(')') - line.find('(') - 1));
         root = new ParseNode(nullptr, line, false);
     } else {
         root = nullptr;
@@ -55,7 +58,7 @@ ParseTree::ParseTree(const string& fileName) {
 
 /**
  * Mutator for the name attribute.
- * @param name Name of the parse tree.
+ * @param _name Name of the parse tree.
  */
 void ParseTree::setName(const string& _name) {
     this->name = _name;
@@ -136,7 +139,7 @@ bool ParseTree::isFullSentence() const{
  * Saves the tree into the file with the given file name. The output file only contains one line representing tree.
  * @param fileName Output file name
  */
-void ParseTree::save(const string& fileName) {
+void ParseTree::save(const string& fileName) const {
     ofstream outputFile;
     outputFile.open(fileName, ostream::out);
     outputFile << "( ";
@@ -156,7 +159,7 @@ string ParseTree::to_string() const{
 /**
  * Calls recursive method to restore the parents of all nodes in the tree.
  */
-void ParseTree::correctParents() {
+void ParseTree::correctParents() const {
     root->correctParents();
 }
 
@@ -164,14 +167,14 @@ void ParseTree::correctParents() {
  * Calls recursive method to remove all nodes starting with the symbol X. If the node is removed, its children are
  * connected to the next sibling of the deleted node.
  */
-void ParseTree::removeXNodes() {
+void ParseTree::removeXNodes() const {
     root->removeXNodes();
 }
 
 /**
  * Calls recursive method to remove all punctuation nodes from the tree.
  */
-void ParseTree::stripPunctuation() {
+void ParseTree::stripPunctuation() const {
     root->stripPunctuation();
 }
 
@@ -188,7 +191,7 @@ ParseNode *ParseTree::getRoot() const{
  * @return A sentence which contains all words in the tree.
  */
 string ParseTree::toSentence() const{
-    return Word::trim(root->toSentence());
+    return StringUtils::trim(root->toSentence());
 }
 
 /**

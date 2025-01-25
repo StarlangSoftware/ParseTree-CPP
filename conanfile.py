@@ -8,7 +8,7 @@ from conan.tools.files import copy
 class ParseTreeConan(ConanFile):
     name = "parse_tree"
     version = "1.0.0"
-    requires = ["dictionary/1.0.0"]
+    requires = ["dictionary/1.0.0", "util/1.0.0"]
     license = "GPL License"
     author = "Olcay Taner Yildiz olcay.yildiz@ozyegin.edu.tr"
     url = "https://github.com/StarlangSoftware/ParseTree-CPP"

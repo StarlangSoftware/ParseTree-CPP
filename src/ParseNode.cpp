@@ -3,6 +3,7 @@
 //
 
 #include "ParseNode.h"
+#include <StringUtils.h>
 
 const vector<string> ParseNode::ADJP = {"NNS", "QP", "NN", "$", "ADVP", "JJ", "VBN", "VBG", "ADJP", "JJR", "NP", "JJS", "DT", "FW", "RBR", "RBS", "SBAR", "RB"};
 const vector<string> ParseNode::ADVP = {"RB", "RBR", "RBS", "FW", "ADVP", "TO", "CD", "JJR", "JJ", "IN", "NP", "JJS", "NN"};
@@ -69,7 +70,7 @@ ParseNode::ParseNode(ParseNode *parent, const string& line, bool isLeaf) {
                     }
                 }
                 if (parenthesisCount == 0 && !childLine.empty()){
-                    children.push_back(new ParseNode(this, Word::trim(childLine), false));
+                    children.push_back(new ParseNode(this, StringUtils::trim(childLine), false));
                     childLine = "";
                 }
             }
@@ -339,7 +340,7 @@ void ParseNode::correctParents() {
 void ParseNode::removeXNodes() {
     int i = 0;
     while (i < children.size()){
-        if (Word::startsWith(children.at(i)->getData().getName(), "X")){
+        if (StringUtils::startsWith(children.at(i)->getData().getName(), "X")){
             children.insert(children.begin() + i + 1, children.at(i)->children.begin(), children.at(i)->children.end());
             children.erase(children.begin() + i);
         } else {
@@ -610,7 +611,7 @@ bool ParseNode::isDummyNode() const{
 string ParseNode::toSentence() const{
     if (children.empty()){
         if (!getData().getName().empty() && !isDummyNode()){
-            return " " + Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(Word::replaceAll(getData().getName(), "-LRB-", "("), "-RRB-", ")"), "-LSB-", "["), "-RSB-", "]"), "-LCB-", "{"), "-RCB-", "}"), "-lrb-", "("), "-rrb-", ")"), "-lsb-", "["), "-rsb-", "]"), "-lcb-", "{"), "-rcb-", "}");
+            return " " + StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(StringUtils::replaceAll(getData().getName(), "-LRB-", "("), "-RRB-", ")"), "-LSB-", "["), "-RSB-", "]"), "-LCB-", "{"), "-RCB-", "}"), "-lrb-", "("), "-rrb-", ")"), "-lsb-", "["), "-rsb-", "]"), "-lcb-", "{"), "-rcb-", "}");
         } else {
             if (isDummyNode()){
                 return "";

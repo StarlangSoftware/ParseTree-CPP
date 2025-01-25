@@ -4,6 +4,7 @@
 
 #include <string>
 #include "Symbol.h"
+#include "StringUtils.h"
 
 const vector<string> Symbol::nonTerminalList = {"ADJP", "ADVP", "CC", "CD", "CONJP", "DT", "EX", "FRAG", "FW", "IN", "INTJ", "JJ", "JJR", "JJS", "LS",
 "LST", "MD", "NAC", "NN", "NNP", "NNPS", "NNS", "NP", "NX", "PDT", "POS", "PP", "PRN", "PRP", "PRP$", "PRT",
@@ -65,7 +66,7 @@ bool Symbol::isTerminal() const{
  * @return True if this symbol can be a chunk label, false otherwise.
  */
 bool Symbol::isChunkLabel() const{
-    if (Word::isPunctuation(name) || contains(sentenceLabels, Word::replaceAll(name, "-.*","")) || contains(phraseLabels, Word::replaceAll(name, "-.*", "")))
+    if (Word::isPunctuation(name) || contains(sentenceLabels, StringUtils::replaceAll(name, "-.*","")) || contains(phraseLabels, StringUtils::replaceAll(name, "-.*", "")))
         return true;
     return false;
 }
@@ -92,7 +93,7 @@ bool Symbol::contains(const vector<string>& list, const string& searchedItem) {
  */
 Symbol Symbol::trimSymbol() const{
     int minusIndex, equalIndex;
-    if (Word::startsWith(name, "-") || (name.find('-') == string::npos && name.find('=') == string::npos)){
+    if (StringUtils::startsWith(name, "-") || (name.find('-') == string::npos && name.find('=') == string::npos)){
         return *this;
     }
     minusIndex = name.find('-');

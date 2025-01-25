@@ -9,7 +9,7 @@ using std::filesystem::directory_iterator;
 /**
  * Strips punctuation symbols from all parseTrees in this TreeBank.
  */
-void TreeBank::stripPunctuation() {
+void TreeBank::stripPunctuation() const {
     for (ParseTree* tree : parseTrees){
         tree->stripPunctuation();
     }

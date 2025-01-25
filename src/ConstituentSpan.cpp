@@ -7,9 +7,9 @@
 /**
  * Constructor for the ConstituentSpan class. ConstituentSpan is a structure for storing constituents or phrases in
  * a sentence with a specific label. Sets the attributes.
- * @param constituent Label of the span.
- * @param start Start index of the span.
- * @param end End index of the span.
+ * @param _constituent Label of the span.
+ * @param _start Start index of the span.
+ * @param _end End index of the span.
  */
 ConstituentSpan::ConstituentSpan(const Symbol& _constituent, int _start, int _end){
     this->constituent = _constituent;

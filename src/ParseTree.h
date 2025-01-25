@@ -32,10 +32,10 @@ public:
     int leafCount() const;
     bool isFullSentence() const;
     vector<ConstituentSpan> constituentSpanList() const;
-    void save(const string& fileName);
-    void correctParents();
-    void removeXNodes();
-    void stripPunctuation();
+    void save(const string& fileName) const;
+    void correctParents() const;
+    void removeXNodes() const;
+    void stripPunctuation() const;
     ParseNode* getRoot() const;
     string toSentence() const;
     string to_string() const;
