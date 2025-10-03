@@ -4,6 +4,9 @@
 
 #include <fstream>
 #include "TreeBank.h"
+
+#include <algorithm>
+#include <filesystem>
 using std::filesystem::directory_iterator;
 
 /**
