@@ -4,6 +4,8 @@
 
 #include "LeafAncestorMetric.h"
 
+#include <cmath>
+
 vector<ParseNode*> LeafAncestorMetric::createList(ParseNode* node) {
     vector<ParseNode*> list = vector<ParseNode*>();
     ParseNode* current = node->getParent()->getParent();
