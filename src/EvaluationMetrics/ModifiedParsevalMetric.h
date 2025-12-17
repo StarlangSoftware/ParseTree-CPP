@@ -9,7 +9,7 @@
 
 class ModifiedParsevalMetric : public ParsevalMetric {
 private:
-    pair<int, int> find(ParseNode* node);
+    pair<int, int> find(const ParseNode* node);
 protected:
     vector<double> add(ParseTree* goldTree, ParseTree* computedTree) override;
 };

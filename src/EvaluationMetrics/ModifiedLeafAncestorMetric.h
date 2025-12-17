@@ -9,7 +9,7 @@
 
 class ModifiedLeafAncestorMetric : public LeafAncestorMetric {
 private:
-    vector<ParseNode*> createList(ParseNode* node, unordered_set<ParseNode*> visited);
+    vector<ParseNode*> createList(const ParseNode* node, unordered_set<ParseNode*> visited);
 protected:
     unordered_map<int, vector<ParseNode*>> calculateStrings(ParseNode* node) override;
 };

@@ -375,7 +375,7 @@ void ParseNode::setChild(int index, ParseNode *child) {
  * Removes a given child from children node list.
  * @param child Child node to be deleted.
  */
-void ParseNode::removeChild(ParseNode* child) {
+void ParseNode::removeChild(const ParseNode* child) {
     for (int i = 0; i < children.size(); i++){
         if (children.at(i) == child){
             children.erase(children.begin() + i);
@@ -442,7 +442,7 @@ void ParseNode::stripPunctuation() {
         if (Word::isPunctuation((*iterator)->getData().getName())){
             iterator = children.erase(iterator);
         } else {
-            iterator++;
+            ++iterator;
         }
     }
     for (ParseNode* node: children)
@@ -487,7 +487,7 @@ ParseNode *ParseNode::lastChild() const{
  * @param child To be checked node.
  * @return True, if child is the last child of this node, false otherwise.
  */
-bool ParseNode::isLastChild(ParseNode *child) const{
+bool ParseNode::isLastChild(const ParseNode *child) const{
     return children.at(children.size() - 1) == child;
 }
 
@@ -708,7 +708,7 @@ void ParseNode::moveRight(ParseNode *node) {
  * Returns the index of the given child of this node.
  * @return Index of the child of this node.
  */
-int ParseNode::getChildIndex(ParseNode *child) const{
+int ParseNode::getChildIndex(const ParseNode *child) const{
     int i;
     for (i = 0; i < children.size(); i++) {
         if (children.at(i) == child) {
@@ -723,7 +723,7 @@ int ParseNode::getChildIndex(ParseNode *child) const{
  * @return True if the given node is descendant of this node.
  */
 bool ParseNode::isDescendant(ParseNode *node) const{
-    for (ParseNode* aChild: children){
+    for (const ParseNode* aChild: children){
         if (aChild == node){
             return true;
         } else {
@@ -742,7 +742,7 @@ bool ParseNode::isDescendant(ParseNode *node) const{
  */
 void ParseNode::constituentSpanList(int startIndex, vector<ConstituentSpan>& list) const{
     if (!children.empty()){
-        list.emplace_back(ConstituentSpan(data, startIndex, startIndex + leafCount()));
+        list.emplace_back(data, startIndex, startIndex + leafCount());
     }
     int total = 0;
     for (ParseNode* parseNode : children){

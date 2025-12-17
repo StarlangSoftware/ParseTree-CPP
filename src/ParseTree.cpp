@@ -77,7 +77,7 @@ string ParseTree::getName() const{
  * @param parseNode ParseNode for which next node is calculated.
  * @return Next leaf node after the given leaf node.
  */
-ParseNode *ParseTree::nextLeafNode(ParseNode *parseNode) const{
+ParseNode *ParseTree::nextLeafNode(const ParseNode *parseNode) const{
     NodeCollector nodeCollector = NodeCollector(root, new IsEnglishLeaf());
     vector<ParseNode*> leafList = nodeCollector.collect();
     for (int i = 0; i < leafList.size() - 1; i++){
@@ -93,7 +93,7 @@ ParseNode *ParseTree::nextLeafNode(ParseNode *parseNode) const{
  * @param parseNode ParseNode for which previous node is calculated.
  * @return Previous leaf node before the given leaf node.
  */
-ParseNode *ParseTree::previousLeafNode(ParseNode *parseNode) const{
+ParseNode *ParseTree::previousLeafNode(const ParseNode *parseNode) const{
     NodeCollector nodeCollector = NodeCollector(root, new IsEnglishLeaf());
     vector<ParseNode*> leafList = nodeCollector.collect();
     for (int i = 1; i < leafList.size(); i++){

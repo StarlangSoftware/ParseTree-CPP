@@ -14,11 +14,11 @@ protected:
 public:
     TreeBank() = default;
     ~TreeBank();
-    TreeBank(const string& folder);
+    explicit TreeBank(const string& folder);
     void stripPunctuation() const;
-    int size() const;
-    int wordCount(bool excludeStopWords) const;
-    ParseTree* get(int index) const;
+    [[nodiscard]] int size() const;
+    [[nodiscard]] int wordCount(bool excludeStopWords) const;
+    [[nodiscard]] ParseTree* get(int index) const;
     void removeTree(int index);
 };
 

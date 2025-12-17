@@ -16,11 +16,11 @@ vector<double> ModifiedParsevalMetric::add(ParseTree *goldTree, ParseTree *compu
     double t = ((m + n) / (m * (1 + (m / (m + n))) + n * (1 - (m / (m + n)))));
     for (const string& key : set1) {
         if (key.find("-PRI") != string::npos) {
-            if (set2.find(key.substr(0, key.length() - 4)) != set2.end()) {
+            if (set2.contains(key.substr(0, key.length() - 4))) {
                 score += (1 + (m / (m + n))) * t;
             }
         } else {
-            if (set2.find(key) != set2.end()) {
+            if (set2.contains(key)) {
                 score += (1 - (m / (m + n))) * t;
             }
         }
@@ -31,7 +31,7 @@ vector<double> ModifiedParsevalMetric::add(ParseTree *goldTree, ParseTree *compu
     return scores;
 }
 
-pair<int, int> ModifiedParsevalMetric::find(ParseNode *node) {
+pair<int, int> ModifiedParsevalMetric::find(const ParseNode *node) {
     pair<int, int> current = pair{0, 0};
     for (int i = 0; i < node->numberOfChildren(); i++) {
         if (!node->getChild(i)->isLeaf()) {

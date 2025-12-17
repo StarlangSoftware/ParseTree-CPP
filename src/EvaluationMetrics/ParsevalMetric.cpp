@@ -13,11 +13,11 @@ vector<double> ParsevalMetric::add(ParseTree *goldTree, ParseTree *computedTree)
     int score = 0;
     for (const string& key : set1) {
         if (key.find("-PRI") != string::npos) {
-            if (set2.find(key.substr(0, key.length() - 4)) != set2.end()) {
+            if (set2.contains(key.substr(0, key.length() - 4))) {
                 score++;
             }
         } else {
-            if (set2.find(key) != set2.end()) {
+            if (set2.contains(key)) {
                 score++;
             }
         }
@@ -50,7 +50,7 @@ vector<double> ParsevalMetric::average(vector<vector<double>> matrix) {
     return average;
 }
 
-pair<string, int> ParsevalMetric::traverseTree(unordered_set<string>& set, int count, ParseNode *node) {
+pair<string, int> ParsevalMetric::traverseTree(unordered_set<string>& set, int count, const ParseNode *node) {
     if (node->getChild(0)->isLeaf()) {
         set.insert(to_string(count) + "|" + node->getData().getName());
         return pair{to_string(count), count + 1};

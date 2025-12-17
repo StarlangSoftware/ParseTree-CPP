@@ -10,7 +10,7 @@
 
 class ParsevalMetric : public Metric {
 protected:
-    pair<string, int> traverseTree(unordered_set<string>& set, int count, ParseNode* node);
+    pair<string, int> traverseTree(unordered_set<string>& set, int count, const ParseNode* node);
     vector<double> add(ParseTree* goldTree, ParseTree* computedTree) override;
 public:
     vector<vector<double>> calculate(ParallelTreeBank* treeBank) override;

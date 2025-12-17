@@ -8,7 +8,7 @@
  * Given two treebanks read, the method removes the trees which do not exist in one of the treebanks. At the end,
  * we will only have the tree files that exist in both treebanks.
  */
-void ParallelTreeBank::removeDifferentTrees() {
+void ParallelTreeBank::removeDifferentTrees() const {
     int i, j;
     i = 0;
     j = 0;

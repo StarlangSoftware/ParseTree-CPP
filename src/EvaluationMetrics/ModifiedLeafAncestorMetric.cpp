@@ -3,12 +3,13 @@
 //
 
 #include "ModifiedLeafAncestorMetric.h"
+#include "../NodeCollector.h"
 
-vector<ParseNode *> ModifiedLeafAncestorMetric::createList(ParseNode *node, unordered_set<ParseNode *> visited) {
+vector<ParseNode *> ModifiedLeafAncestorMetric::createList(const ParseNode *node, unordered_set<ParseNode *> visited) {
     vector<ParseNode*> list = vector<ParseNode*>();
     ParseNode* current = node->getParent();
     while (current != nullptr) {
-        if (visited.find(current) == visited.end()) {
+        if (!visited.contains(current)) {
             visited.insert(current);
             list.push_back(current);
         } else {

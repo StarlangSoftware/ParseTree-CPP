@@ -60,7 +60,7 @@ TreeBank::TreeBank(const string& folder) {
             files.emplace_back(file.path());
         }
     }
-    sort(files.begin(), files.end());
+    ranges::sort(files);
     for (const string& file : files) {
         auto* parseTree = new ParseTree(file);
         parseTree->setName(file.substr(file.find_last_of('/') + 1));

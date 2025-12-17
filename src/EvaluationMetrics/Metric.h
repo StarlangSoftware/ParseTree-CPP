@@ -13,7 +13,7 @@ class Metric {
 protected:
     virtual vector<double> add(ParseTree* goldTree, ParseTree* computedTree) = 0;
 public:
-    virtual ~Metric() {}
+    virtual ~Metric() = default;
     virtual vector<vector<double>> calculate(ParallelTreeBank* treeBank) = 0;
     virtual vector<double> average(vector<vector<double>> matrix) = 0;
 };

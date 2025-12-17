@@ -3,10 +3,10 @@
 //
 
 #include "LeafAncestorMetric.h"
-
+#include "../NodeCollector.h"
 #include <cmath>
 
-vector<ParseNode*> LeafAncestorMetric::createList(ParseNode* node) {
+vector<ParseNode*> LeafAncestorMetric::createList(const ParseNode* node) {
     vector<ParseNode*> list = vector<ParseNode*>();
     ParseNode* current = node->getParent()->getParent();
     pair<int, string> entry = pair<int, string>(-1, "");
@@ -78,7 +78,7 @@ vector<double> LeafAncestorMetric::add(ParseTree* goldTree, ParseTree* computedT
                 }
             }
         }
-        accuracy[0] += ((double) (entry.second.size() + map2[entry.first].size()) - dp[entry.second.size() - 1][map2[entry.first].size() - 1]) / (entry.second.size() + map2[entry.first].size());
+        accuracy[0] += (static_cast<double>(entry.second.size() + map2[entry.first].size()) - dp[entry.second.size() - 1][map2[entry.first].size() - 1]) / (entry.second.size() + map2[entry.first].size());
     }
     accuracy[1] += map1.size();
     return accuracy;

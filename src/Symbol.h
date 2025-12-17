@@ -18,11 +18,11 @@ private:
 public:
     Symbol() = default;
     explicit Symbol(const string& name);
-    bool isVerb() const;
-    bool isVP() const;
-    bool isTerminal() const;
-    bool isChunkLabel() const;
-    Symbol trimSymbol() const;
+    [[nodiscard]] bool isVerb() const;
+    [[nodiscard]] bool isVP() const;
+    [[nodiscard]] bool isTerminal() const;
+    [[nodiscard]] bool isChunkLabel() const;
+    [[nodiscard]] Symbol trimSymbol() const;
     static bool contains(const vector<string>& list, const string& searchedItem);
     bool operator==(const Symbol &anotherSymbol) const{
         return (name == anotherSymbol.name);

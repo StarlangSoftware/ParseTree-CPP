@@ -15,7 +15,7 @@ private:
     void collectNodes(ParseNode* parseNode, vector<ParseNode*>& collected) const;
 public:
     NodeCollector(ParseNode* rootNode, NodeCondition* condition);
-    vector<ParseNode*> collect() const;
+    [[nodiscard]] vector<ParseNode*> collect() const;
 };
 
 

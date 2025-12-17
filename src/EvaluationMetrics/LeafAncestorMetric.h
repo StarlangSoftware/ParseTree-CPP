@@ -6,12 +6,11 @@
 #define PARSETREE_LEAFANCESTORMETRIC_H
 #include "Metric.h"
 #include "unordered_map"
-#include "../NodeCollector.h"
 #include "../NodeCondition/IsLeaf.h"
 
 class LeafAncestorMetric : public Metric {
 private:
-    vector<ParseNode*> createList(ParseNode* node);
+    vector<ParseNode*> createList(const ParseNode* node);
 protected:
     virtual unordered_map<int, vector<ParseNode*>> calculateStrings(ParseNode* node);
     vector<double> add(ParseTree* goldTree, ParseTree* computedTree) override;
